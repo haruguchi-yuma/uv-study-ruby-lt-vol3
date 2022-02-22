@@ -1,44 +1,35 @@
 ---
-# try also 'default' to start simple
-theme: seriph
-# random image from a curated Unsplash collection by Anthony
-# like them? see https://unsplash.com/collections/94734566/slidev
-background: https://source.unsplash.com/collection/94734566/1920x1080
-# apply any windi css classes to the current slide
-class: 'text-center'
-# https://sli.dev/custom/highlighters.html
+theme: default
+class: text-center
+download: true
 highlighter: shiki
-# show line numbers in code blocks
-lineNumbers: false
-# some information about the slides, markdown enabled
-info: |
-  ## Slidev Starter Template
-  Presentation slides for developers.
-
-  Learn more at [Sli.dev](https://sli.dev)
-# persist drawings in exports and build
+lineNumbers: true
+colorSchema: light
+aspectRatio: 16/9
 drawings:
   persist: false
+fonts:
+  sans: Noto Sans JP
+title: '[''a'', ''b'', ''c''].map(&:upcase) is 何？'
 ---
 
-# Welcome to Slidev
+<div class="text-gray text-3xl">
+  
+# ['a', 'b', 'c'].map(&:upcase) is 何？
 
-Presentation slides for developers
+</div>
+<span class="text-2xl text-orange-400">初学者が調べるRubyのしくみ</span>
 
-<div class="pt-12">
-  <span @click="$slidev.nav.next" class="px-2 py-1 rounded cursor-pointer" hover="bg-white bg-opacity-10">
-    Press Space for next page <carbon:arrow-right class="inline"/>
+<div class="absolute bottom-10 left-16">
+  <span class="text-xl">
+    2022-02-22 UV Study: Ruby LT会 Vol.3
   </span>
 </div>
 
-<div class="abs-br m-6 flex gap-2">
-  <button @click="$slidev.nav.openInEditor()" title="Open in Editor" class="text-xl icon-btn opacity-50 !border-none !hover:text-white">
-    <carbon:edit />
-  </button>
-  <a href="https://github.com/slidevjs/slidev" target="_blank" alt="GitHub"
-    class="text-xl icon-btn opacity-50 !border-none !hover:text-white">
-    <carbon-logo-github />
-  </a>
+<div class="absolute bottom-10 right-16">
+  <span class="font-700 text-xl">
+    @haruguchi-yuma
+  </span>
 </div>
 
 <!--
@@ -47,337 +38,425 @@ The last comment block of each slide will be treated as slide notes. It will be 
 
 ---
 
-# What is Slidev?
+# 目次
 
-Slidev is a slides maker and presenter designed for developers, consist of the following features
+1. 自己紹介
+1. 概要説明
+1. `['a', 'b', 'c'].map(&:upcase)`のコードの説明
+1. ちょっと遊んでみた
+1. 感想
 
-- 📝 **Text-based** - focus on the content with Markdown, and then style them later
-- 🎨 **Themable** - theme can be shared and used with npm packages
-- 🧑‍💻 **Developer Friendly** - code highlighting, live coding with autocompletion
-- 🤹 **Interactive** - embedding Vue components to enhance your expressions
-- 🎥 **Recording** - built-in recording and camera view
-- 📤 **Portable** - export into PDF, PNGs, or even a hostable SPA
-- 🛠 **Hackable** - anything possible on a webpage
+---
 
-<br>
-<br>
+# 自己紹介
 
-Read more about [Why Slidev?](https://sli.dev/guide/why)
+[FJORD BOOT CAMP](https://bootcamp.fjord.jp/)で学習しています。
+外部のLT会は初参加です！よろしくお願いします😁
 
-<!--
-You can have `style` tag in markdown to override the style for the current page.
-Learn more: https://sli.dev/guide/syntax#embedded-styles
--->
+<div class="grid grid-cols-2 gap-4">
+
+- 名前：haruguchi-yuma
+
+- <a href="https://github.com/haruguchi-yuma" target="_blank"><img alt="Github" src="https://img.shields.io/badge/HaruguchiYuma-%2312100E.svg?&style=flat-square&logo=Github&logoColor=white" class="inline" /></a>
+<a href="https://twitter.com/haruguchiyuma" target="_blank"><img alt="Twitter" src="https://img.shields.io/badge/@haruguchiyuma-%231DA1F2.svg?&style=flat-square&logo=twitter&logoColor=white" class="mx-1 inline" /></a>
+<a href="https://haruguchi-yuma.hatenablog.com/" target="_blank"><img alt="Hatena" src="https://img.shields.io/badge/Blog-haruguchi-orange?&style=flat-square&logo=hatena&logoColor=orange" class="mx-1 inline" /></a>
+
+- 趣味：バンド、数学、読書、モブプロ
+- 住んでいるところ：滋賀県
+- 前職：公立中学校の教員
+
+
+<div class="flex flex-col">
+
+<div class="flex flex-row justify-around">
+
+<img src="/turtle.png" class="w-30 rounded-full"/>
+<img src="/piyorudo.png" class="w-30 rounded-full" />
+<img src="/lake_biwa.png" class="w-30 h-40" />
+
+</div>
+
+
+</div>
+
+</div>
+
+
+---
+class: 'text-center'
+---
+
+<div class="absolute top-60 right-105">
+
+<h1 class="text-8xl font-black">概要説明</h1>
+
+</div>
+
+---
+
+# 何を発表するのか？
+
+
+<v-clicks>
+
+<div class="grid grid-cols-2 gap-4">
+
+
+<div>
+
+### 1. どういう仕組みで動いているのか
+
+```ruby
+[ 'a' , 'b' , 'c' ].map(&:upcase)
+=> [ 'A', 'B', 'C' ]
+```
+- 引数に&をつけるのはなぜ？
+- ただのシンボル`:upcase`がなぜメソッドっぽい振る舞いをするのか？
+
+</div>
+
+
+<div>
+
+### 2. この仕組みを使って遊んでみた
+
+```ruby
+[ 'a', 'b', 'c' ].map(&'upcase')
+=> ['A', 'B', 'C']
+```
+
+- 文字列を渡しても動くようにしてみた！
+</div>
+
+</div>
+
+</v-clicks>
 
 <style>
-h1 {
-  background-color: #2B90B6;
-  background-image: linear-gradient(45deg, #4EC5D4 10%, #146b8c 20%);
-  background-size: 100%;
-  -webkit-background-clip: text;
-  -moz-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -moz-text-fill-color: transparent;
+code {
+  font-size: 1.1rem;
+}
+</style>
+---
+
+<div class="absolute top-60 right-60">
+
+<h1 class="text-8xl font-black">['a', 'b', 'c'].map(&:upase)の説明</h1>
+
+</div>
+
+---
+
+# 理解するために必要な知識
+
+<div class="my-4">
+
+- ブロック付きメソッド
+- Procオブジェクト
+- Symbol#to_procメソッドの挙動
+
+</div>
+---
+
+# ブロック付きのメソッド
+### 定義方法と呼び出し
+
+<div>
+
+<v-clicks>
+
+<div class="my-4">
+
+
+
+</div>
+
+```ruby {1-|9-13|1-7|1,2|5,6,10-12|3-4|1-13}
+# メソッド定義
+def foo(&block)
+  p block # => #<Proc:0x0000000104a79338>
+  p block.class # => Proc
+  # callメソッドでブロックの処理を実行
+  block.call('Alice') # 必要に応じて引数を渡すことができる
+end
+
+# 呼び出し
+foo do |name|
+  puts "#{name}さん、ごきげんよう!"
+end
+=> Aliceさん、ごきげんよう!
+```
+
+<div>
+
+### ☆Point
+<div class="border-solid border-2 border-orange-400 p-1">
+
+- (&...)とすることでブロックはProcオブジェクトに変換される
+- ブロック（Procオブジェクト)の処理は`call`メソッドで実行
+
+</div>
+
+</div>
+
+</v-clicks>
+
+</div>
+
+<style>
+code {
+  font-size: 1.1rem;
 }
 </style>
 
 ---
 
-# Navigation
 
-Hover on the bottom-left corner to see the navigation's controls panel, [learn more](https://sli.dev/guide/navigation.html)
+<v-clicks>
 
-### Keyboard Shortcuts
 
-|     |     |
-| --- | --- |
-| <kbd>right</kbd> / <kbd>space</kbd>| next animation or slide |
-| <kbd>left</kbd>  / <kbd>shift</kbd><kbd>space</kbd> | previous animation or slide |
-| <kbd>up</kbd> | previous slide |
-| <kbd>down</kbd> | next slide |
 
-<!-- https://sli.dev/guide/animations.html#click-animations -->
-<img
-  v-click
-  class="absolute -bottom-9 -left-7 w-80 opacity-50"
-  src="https://sli.dev/assets/arrow-bottom-left.svg"
-/>
-<p v-after class="absolute bottom-23 left-45 opacity-30 transform -rotate-10">Here!</p>
+<p class="text-center　text-2xl py-20"><span class="border-b-2 border-orange-500">ブロック→Procオブジェクト</span>→.callで実行</p>
+
+
+<h3 class="text-center font-black"> メソッドに直接Procオブジェクトを渡すこともできるのでは？🤔</h3>
+
+
+
+<div>
+
+<p class="text-center text-4xl text-orange-500">=> できた！！！</p>
+
+</div>
+
+
+
+</v-clicks>
 
 ---
-layout: image-right
-image: https://source.unsplash.com/collection/94734566/1920x1080
----
 
-# Code
+# Procオブジェクトをメソッドに渡す
 
-Use code snippets and get the highlighting directly![^1]
+<v-clicks>
 
-```ts {all|2|1-6|9|all}
-interface User {
-  id: number
-  firstName: string
-  lastName: string
-  role: string
-}
+```ruby{1-9|1-6|6-9|1,8-9|1-9}
+def foo(&block)
+  block.call('Alice')
+end
 
-function updateUser(id: number, update: User) {
-  const user = getUser(id)
-  const newUser = {...user, ...update}  
-  saveUser(id, newUser)
-}
+# Procオブジェクトを生成
+greeting_proc = Proc.new { |name| puts "#{name}さん、ごきげんよう!" }
+
+foo(&greeting_proc) #&が必要
+=> Aliceさん、ごきげんよう!
 ```
 
-<arrow v-click="3" x1="400" y1="420" x2="230" y2="330" color="#564" width="3" arrowSize="1" />
+<div>
 
-[^1]: [Learn More](https://sli.dev/guide/syntax.html#line-highlighting)
+### ☆Point
+<div class="border-solid border-2 border-orange-400 p-1">
+
+- ブロックの代わりに最初からProcオブジェクトを引数として渡すことも可能
+- メソッド定義で(&...)としているときはメソッド呼び出しも引数の先頭に&をつけて呼び出す
+
+</div>
+
+もっとよく調べてみると、、、
+
+</div>
+
+</v-clicks>
 
 <style>
-.footnotes-sep {
-  @apply mt-20 opacity-10;
+code {
+  font-size: 1.1rem;
 }
-.footnotes {
-  @apply text-sm opacity-75;
-}
-.footnote-backref {
-  display: none;
+</style>
+---
+
+# 実はprocオブジェクト以外も渡せる
+
+```ruby
+foo(&greeting_proc)
+=> Aliceさん、ごきげんよう!
+```
+
+引数の先頭に＆をつけて呼び出すとき、オブジェクトに対して暗黙的に`to_proc`メソッドを呼び出している！！(るりま参照)
+
+<v-clicks>
+
+<p class="text-xl text-orange-500">=> `to_proc`メソッドを定義しているオブジェクトであれば引数として渡すことができる！！</p>
+
+<div class="my-4">
+
+<hr>
+
+### to_procメソッドを定義しているクラス
+
+- Proc
+- Method
+- <span class="border-solid border-2 border-orange-500">Symbol</span>
+
+</div>
+
+<div>
+
+<p>なのでこのようなコードが動くということになります。</p>
+
+```ruby
+['a', 'b', 'c'].map(&:upcase)
+```
+
+</div>
+
+</v-clicks>
+
+<style>
+code {
+  font-size: 1.1rem;
 }
 </style>
 
 ---
 
-# Components
+# Symbol#to_procの挙動
 
-<div grid="~ cols-2 gap-4">
+### callするとselfをメソッドとして呼び出す
+
+<v-clicks>
+
+```ruby
+:upcase.to_proc.call
+=> no receiver given (ArgumentError)
+```
+
+```ruby
+# 'a'.upcaseと同じ
+:upcase.to_proc.call('a')
+=> "A"
+```
+
 <div>
 
-You can use Vue components directly inside your slides.
+### ☆Point
+<div class="border-solid border-2 border-orange-400 p-1">
 
-We have provided a few built-in components like `<Tweet/>` and `<Youtube/>` that you can use directly. And adding your custom components is also super easy.
+- :symbol.to_procを実行（call)するとselfをメソッドとして呼び出す
+- ただし、`call`メソッドの第一引数でメソッドのレシーバを指定する
 
-```html
-<Counter :count="10" />
-```
-
-<!-- ./components/Counter.vue -->
-<Counter :count="10" m="t-4" />
-
-Check out [the guides](https://sli.dev/builtin/components.html) for more.
 
 </div>
+
+</div>
+
+</v-clicks>
+
+<style>
+code {
+  font-size: 1.1rem;
+}
+</style>
+
+---
+
+# まとめ
+
+```ruby
+['a', 'b', 'c'].map(&:upcase)
+=> ['A', 'B', 'C' ]
+
+# イメージ
+  :upcase.to_proc.call('a') => 'A'
+  :upcase.to_proc.call('b') => 'B'
+  :upcase.to_proc.call('c') => 'C'
+```
+
+1. ただのシンボル:upcaseは&によってProcオブジェクト化する
+1. mapメソッドは＃イメージのように配列の要素を一つずつ渡していくのでそれぞれ大文字に変換する
+
+<style>
+code {
+  font-size: 1.1rem;
+}
+</style>
+
+---
+
+<div class="absolute top-60 right-80">
+
+<h1 class="text-8xl font-black">ちょっと遊んでみた🎤</h1>
+
+</div>
+
+---
+
+# 文字列を渡しても動くようにしたい！
+
+<v-clicks>
+
+```ruby{7-8|1-5|1-}
+class String
+  def to_proc
+    Proc.new { |obj| eval "obj.#{self}" }
+  end
+end
+
+['a', 'b', 'c'].map(&'upcase') # 文字列のupcaseを渡す
+=> ['A', 'B', 'C']
+```
+<div class="mt-20">
+
+<p class="text-black text-2xl text-center"><span class="text-orange-500">動きました！！</span></p>
+
+</div>
+
+</v-clicks>
+
+<style>
+code {
+  font-size: 1.1rem;
+}
+</style>
+
+---
+
+# 感想：技術ネタを初めて発表してみて
+
+<div class="my-4">
+
+### 適当なことは言えないので、ドキュメントをくまなくみる癖がついた
+
+</div>
+
+<v-clicks>
+
+- 意外と調査するのに時間がかかる
+- この表現は正しいのか？伝わるのか？
+- 改めてRubyの柔軟性に気がついた
+- Rubyで色々試すのが楽しかった
+
+</v-clicks>
+
+---
+<div class="grid grid-cols-2 gap-4">
+
+<div class="my-4">
+
+# 参考資料
+- [るりま - ブロック付きメソッド呼び出し](https://docs.ruby-lang.org/ja/latest/doc/spec=2fcall.html#block)
+- [るりま - class Proc](https://docs.ruby-lang.org/ja/latest/class/Proc.html)
+- [るりま - class Symbol#to_proc](https://docs.ruby-lang.org/ja/latest/class/Symbol.html#I_TO_PROC)
+
+</div>
+
 <div>
 
-```html
-<Tweet id="1390115482657726468" />
-```
+<v-clicks>
 
-<Tweet id="1390115482657726468" scale="0.65" />
+<img src="/arigatou.png" class="rounded-full"/>
 
-</div>
-</div>
-
-
----
-class: px-20
----
-
-# Themes
-
-Slidev comes with powerful theming support. Themes can provide styles, layouts, components, or even configurations for tools. Switching between themes by just **one edit** in your frontmatter:
-
-<div grid="~ cols-2 gap-2" m="-t-2">
-
-```yaml
----
-theme: default
----
-```
-
-```yaml
----
-theme: seriph
----
-```
-
-<img border="rounded" src="https://github.com/slidevjs/themes/blob/main/screenshots/theme-default/01.png?raw=true">
-
-<img border="rounded" src="https://github.com/slidevjs/themes/blob/main/screenshots/theme-seriph/01.png?raw=true">
+</v-clicks>
 
 </div>
 
-Read more about [How to use a theme](https://sli.dev/themes/use.html) and
-check out the [Awesome Themes Gallery](https://sli.dev/themes/gallery.html).
-
----
-preload: false
----
-
-# Animations
-
-Animations are powered by [@vueuse/motion](https://motion.vueuse.org/).
-
-```html
-<div
-  v-motion
-  :initial="{ x: -80 }"
-  :enter="{ x: 0 }">
-  Slidev
 </div>
-```
-
-<div class="w-60 relative mt-6">
-  <div class="relative w-40 h-40">
-    <img
-      v-motion
-      :initial="{ x: 800, y: -100, scale: 1.5, rotate: -50 }"
-      :enter="final"
-      class="absolute top-0 left-0 right-0 bottom-0"
-      src="https://sli.dev/logo-square.png"
-    />
-    <img
-      v-motion
-      :initial="{ y: 500, x: -100, scale: 2 }"
-      :enter="final"
-      class="absolute top-0 left-0 right-0 bottom-0"
-      src="https://sli.dev/logo-circle.png"
-    />
-    <img
-      v-motion
-      :initial="{ x: 600, y: 400, scale: 2, rotate: 100 }"
-      :enter="final"
-      class="absolute top-0 left-0 right-0 bottom-0"
-      src="https://sli.dev/logo-triangle.png"
-    />
-  </div>
-
-  <div
-    class="text-5xl absolute top-14 left-40 text-[#2B90B6] -z-1"
-    v-motion
-    :initial="{ x: -80, opacity: 0}"
-    :enter="{ x: 0, opacity: 1, transition: { delay: 2000, duration: 1000 } }">
-    Slidev
-  </div>
-</div>
-
-<!-- vue script setup scripts can be directly used in markdown, and will only affects current page -->
-<script setup lang="ts">
-const final = {
-  x: 0,
-  y: 0,
-  rotate: 0,
-  scale: 1,
-  transition: {
-    type: 'spring',
-    damping: 10,
-    stiffness: 20,
-    mass: 2
-  }
-}
-</script>
-
-<div
-  v-motion
-  :initial="{ x:35, y: 40, opacity: 0}"
-  :enter="{ y: 0, opacity: 1, transition: { delay: 3500 } }">
-
-[Learn More](https://sli.dev/guide/animations.html#motion)
-
-</div>
-
----
-
-# LaTeX
-
-LaTeX is supported out-of-box powered by [KaTeX](https://katex.org/).
-
-<br>
-
-Inline $\sqrt{3x-1}+(1+x)^2$
-
-Block
-$$
-\begin{array}{c}
-
-\nabla \times \vec{\mathbf{B}} -\, \frac1c\, \frac{\partial\vec{\mathbf{E}}}{\partial t} &
-= \frac{4\pi}{c}\vec{\mathbf{j}}    \nabla \cdot \vec{\mathbf{E}} & = 4 \pi \rho \\
-
-\nabla \times \vec{\mathbf{E}}\, +\, \frac1c\, \frac{\partial\vec{\mathbf{B}}}{\partial t} & = \vec{\mathbf{0}} \\
-
-\nabla \cdot \vec{\mathbf{B}} & = 0
-
-\end{array}
-$$
-
-<br>
-
-[Learn more](https://sli.dev/guide/syntax#latex)
-
----
-
-# Diagrams
-
-You can create diagrams / graphs from textual descriptions, directly in your Markdown.
-
-<div class="grid grid-cols-3 gap-10 pt-4 -mb-6">
-
-```mermaid {scale: 0.5}
-sequenceDiagram
-    Alice->John: Hello John, how are you?
-    Note over Alice,John: A typical interaction
-```
-
-```mermaid {theme: 'neutral', scale: 0.8}
-graph TD
-B[Text] --> C{Decision}
-C -->|One| D[Result 1]
-C -->|Two| E[Result 2]
-```
-
-```plantuml {scale: 0.7}
-@startuml
-
-package "Some Group" {
-  HTTP - [First Component]
-  [Another Component]
-}
-
-node "Other Groups" {
-  FTP - [Second Component]
-  [First Component] --> FTP
-}
-
-cloud {
-  [Example 1]
-}
-
-
-database "MySql" {
-  folder "This is my folder" {
-    [Folder 3]
-  }
-  frame "Foo" {
-    [Frame 4]
-  }
-}
-
-
-[Another Component] --> [Example 1]
-[Example 1] --> [Folder 3]
-[Folder 3] --> [Frame 4]
-
-@enduml
-```
-
-</div>
-
-[Learn More](https://sli.dev/guide/syntax.html#diagrams)
-
-
----
-layout: center
-class: text-center
----
-
-# Learn More
-
-[Documentations](https://sli.dev) · [GitHub](https://github.com/slidevjs/slidev) · [Showcases](https://sli.dev/showcases.html)
